@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
@@ -25,6 +26,11 @@ public class GreetingController {
         user.setFirstName(firstName);
         user.setLastName(lastName);
         return greetingService.addGreeting(user);
+    }
+
+    @RequestMapping("/displayallgreeting")
+    public List<Greeting> displayGreeting(){
+        return greetingService.getAllGreetings();
     }
 
     @PutMapping("/put/greeting")
