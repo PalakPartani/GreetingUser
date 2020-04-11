@@ -33,6 +33,11 @@ public class GreetingController {
         return greetingService.getAllGreetings();
     }
 
+    @GetMapping("/getbyid")
+    public Greeting displayGreetingById(Long id){
+        return greetingService.getGreetingById(id);
+    }
+
     @PutMapping("/put/greeting")
     public ResponseEntity<Greeting> putGreeting(@RequestBody Greeting greeting) {
         return new ResponseEntity<>(greeting, HttpStatus.OK);

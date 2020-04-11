@@ -1,5 +1,6 @@
 package com.greeting.service.implementation;
 
+import com.greeting.exception.GreetingException;
 import com.greeting.model.Greeting;
 import com.greeting.model.User;
 import com.greeting.repository.IGreetingRepository;
@@ -20,8 +21,8 @@ public class GreetingService implements IGreetingService {
 
     @Override
     public Greeting addGreeting(User user) {
-        String message=user.toString().isEmpty()?"Hello World":
-                "Hello "+user.getFirstName()+"  "+user.getLastName();
+        String message = user.toString().isEmpty() ? "Hello World" :
+                "Hello " + user.getFirstName() + "  " + user.getLastName();
         Greeting greeting = new Greeting();
         greeting.setId(counter.incrementAndGet());
         greeting.setMessage(message);
@@ -33,4 +34,9 @@ public class GreetingService implements IGreetingService {
         return greetingRepository.findAll();
     }
 
+    @Override
+    public Greeting getGreetingById(Long id) {
+
+        return greetingRepository.findById(id).orElseThrow(() -> new GreetingException("Sorry! no records for such id", GreetingException.ExceptionTypes.NO_SUCH_ID));
+    }
 }

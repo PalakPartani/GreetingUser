@@ -11,5 +11,5 @@ public interface IGreetingService {
 
     List<Greeting> getAllGreetings();
 
-    //List<Greeting> getGreetingById();           //new
+    Greeting getGreetingById(Long id);
 }
