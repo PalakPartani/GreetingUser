@@ -45,4 +45,13 @@ public class GreetingService implements IGreetingService {
         greetingRepository.deleteById(id);
     }
 
+    @Override
+    public Greeting updatgreetingById(Long id, String fName, String lName) {
+        Greeting byId = greetingRepository.findById(id)
+                .orElseThrow(() -> new GreetingException("Sorry! no records for such id", GreetingException.ExceptionTypes.NO_SUCH_ID));
+        byId.setMessage("Hello " + fName + " " + lName);
+        return greetingRepository.save(byId);
+
+    }
+
 }

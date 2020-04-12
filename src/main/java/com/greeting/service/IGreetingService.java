@@ -15,4 +15,6 @@ public interface IGreetingService {
 
     void deleteGreetingById(Long id);
 
+    Greeting updatgreetingById(Long id, String fName, String lName);
+
 }

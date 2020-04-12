@@ -4,8 +4,6 @@ import com.greeting.model.Greeting;
 import com.greeting.model.User;
 import com.greeting.service.IGreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -43,8 +41,13 @@ public class GreetingController {
         greetingService.deleteGreetingById(id);
     }
 
-    @PutMapping("/put/greeting")
-    public ResponseEntity<Greeting> putGreeting(@RequestBody Greeting greeting) {
-        return new ResponseEntity<>(greeting, HttpStatus.OK);
+    @PutMapping("/putupdate/{id}")
+    public void update(@PathVariable Long id,
+                       @RequestParam(value = "fName") String firstName,
+                       @RequestParam(value = "lName") String lastName){
+
+        greetingService.updatgreetingById(id, firstName, lastName);
+
     }
+
 }
