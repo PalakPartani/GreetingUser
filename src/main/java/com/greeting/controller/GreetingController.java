@@ -38,6 +38,11 @@ public class GreetingController {
         return greetingService.getGreetingById(id);
     }
 
+    @PutMapping("/getbyiddelete/{id}")
+    public void delete(@PathVariable Long id) {
+        greetingService.deleteGreetingById(id);
+    }
+
     @PutMapping("/put/greeting")
     public ResponseEntity<Greeting> putGreeting(@RequestBody Greeting greeting) {
         return new ResponseEntity<>(greeting, HttpStatus.OK);

@@ -39,4 +39,10 @@ public class GreetingService implements IGreetingService {
 
         return greetingRepository.findById(id).orElseThrow(() -> new GreetingException("Sorry! no records for such id", GreetingException.ExceptionTypes.NO_SUCH_ID));
     }
+
+    @Override
+    public void deleteGreetingById(Long id) {
+        greetingRepository.deleteById(id);
+    }
+
 }
