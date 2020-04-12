@@ -29,12 +29,12 @@ public class GreetingController {
     }
 
     @RequestMapping("/displayallgreeting")
-    public List<Greeting> displayGreeting(){
+    public List<Greeting> displayGreeting() {
         return greetingService.getAllGreetings();
     }
 
-    @GetMapping("/getbyid")
-    public Greeting displayGreetingById(Long id){
+    @PostMapping("/getbyid/{id}")
+    public Greeting displayGreetingById(@PathVariable Long id) {
         return greetingService.getGreetingById(id);
     }
 
